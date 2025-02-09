@@ -688,7 +688,7 @@ func (q *QrCode) WriteAsSVG(config *QrCodeImgConfig, writer io.Writer, light, da
 	return q.doWriteAsSVG(config, writer, light, dark)
 }
 
-func (q *QrCode) SVGString(config *QrCodeImgConfig, writer io.Writer, light, dark string) (string, error) {
+func (q *QrCode) SVGString(config *QrCodeImgConfig, light, dark string) (string, error) {
 	err := config.Valid()
 	if err != nil {
 		return "", err
