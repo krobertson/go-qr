@@ -688,6 +688,22 @@ func (q *QrCode) WriteAsSVG(config *QrCodeImgConfig, writer io.Writer, light, da
 	return q.doWriteAsSVG(config, writer, light, dark)
 }
 
+func (q *QrCode) SVGString(config *QrCodeImgConfig, writer io.Writer, light, dark string) (string, error) {
+	err := config.Valid()
+	if err != nil {
+		return "", err
+	}
+
+	svg := ""
+	if config.options.optimalSVG {
+		svg = q.toSvgOptimizedString(config, light, dark)
+	} else {
+		svg = q.toSVGString(config, light, dark)
+	}
+
+	return svg, nil
+}
+
 // doWriteAsSVG writes the QR code as SVG with QrCodeImgConfig, light, dark color to the provided io.Writer.
 //
 // light is the color to use for light sections of the QR code, for example, "#FFFFFF".
