@@ -1,4 +1,4 @@
-module github.com/piglig/go-qr
+module github.com/krobertson/go-qr
 
 go 1.18
 
